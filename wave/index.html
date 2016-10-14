@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:200px;
+            height:200px;
+            border:5px solid #000;
+            border-radius: 50%;
+            margin:200px auto;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        #wave{
+            width:400px;
+            height:400px;
+            position:absolute;
+            top:100%;
+            left:-100px;
+            background:orange;
+            border-radius: 40%;
+            animation: 5s rote infinite linear;
+        }
+        @keyframes rote{
+            0%{
+               transform: rotate(0deg)
+            }
+            100%{
+               transform: rotate(360deg)
+            }
+        }
+        #percent{
+            position: absolute;
+            width:200px;
+            height:200px;
+            text-align: center;
+            line-height: 200px;
+            font-size:20px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="wave"></div>
+        <div id="percent">1%</div>
+    </div>
+    <script>
+        var wave = document.getElementById('wave');
+        var percent = document.getElementById("percent");
+        var t = 1.0;
+        var a ;
+        var timer = setInterval(function(){
+            t = t+1;
+            wave.style.top = 100 -t+"%";
+            percent.innerHTML = t+"%";
+            if(t == 100){
+                clearInterval(timer);
+            }
+        },50)
+      
+    </script>
+</body>
+</html>
